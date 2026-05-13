@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
   --font-heading: var(--font-sans);
-  --font-display: "Barlow Condensed", sans-serif;
+  --font-display: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
 
   /* MLB pilot accents */
   --color-gold: #8a6d1f;
