@@ -3,9 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 
-export const metadata = {
-  title: "Most Lovable Brand — Placement Dashboard",
-};
 
 const USER_ID = "seller_marta_handmade";
 const DAILY_BUDGET = 25;

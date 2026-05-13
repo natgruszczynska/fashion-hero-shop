@@ -3,10 +3,6 @@
 import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react";
 import { PromotedBrands } from "@/components/sections/promoted-brands";
 
-export const metadata = {
-  title: "Most Lovable Brands — Pilotaż dla sellerów FashionHero",
-  description: "Pierwszy płatny placement na homepage FashionHero. CPC, 500 zł kredytu na start, ryzyko po naszej stronie. Pilotaż dla 30 sellerów.",
-};
 
 function track(event: string, payload: Record<string, unknown> = {}) {
   const evt = { event, timestamp: new Date().toISOString(), ...payload };
