@@ -66,8 +66,8 @@ function TopBar() {
   return (
     <header className="border-b border-border bg-background sticky top-0 z-30">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
-        <span className="text-[22px] leading-none tracking-tight" style={{ fontFamily: "'DM Sans', sans-serif", fontStyle: "italic", fontWeight: 400 }}>FashionHero</span>
-        <span className="uppercase text-[10px] px-2.5 py-1 border" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "2px", borderColor: "#e8d28a", color: "#8a6d1f" }}>
+        <span className="text-[22px] leading-none tracking-tight italic font-normal">FashionHero</span>
+        <span className="uppercase text-[10px] px-2.5 py-1 border" style={{ letterSpacing: "2px", borderColor: "#e8d28a", color: "#8a6d1f" }}>
           Pilot · Most Lovable Brands
         </span>
       </div>
@@ -80,7 +80,7 @@ function Hero({ onCta }: { onCta: () => void }) {
     <section className="max-w-[1200px] mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-10 md:pb-14">
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
         <div>
-          <h1 className="uppercase text-[44px] md:text-[64px] leading-[0.95]" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.005em" }}>
+          <h1 className="text-[32px] md:text-5xl font-normal leading-tight">
             Pokaż swoją markę 2,4 mln kupujących. Płać tylko za kliki.
           </h1>
           <p className="mt-7 text-[17px] md:text-[19px] leading-[1.6] text-muted-foreground font-light max-w-[520px]">
@@ -126,7 +126,7 @@ function StatStrip() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-8 py-8 md:py-10 grid grid-cols-1 md:grid-cols-3 md:divide-x divide-border">
         {stats.map((s, i) => (
           <div key={s.v} className={`flex flex-col gap-1.5 md:px-8 ${i === 0 ? "md:pl-0" : ""} ${i === stats.length - 1 ? "md:pr-0" : ""} py-3 md:py-0`}>
-            <div className="uppercase text-[28px] md:text-[34px] leading-[0.95] text-foreground" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>{s.v}</div>
+            <div className="text-[28px] md:text-[34px] font-normal leading-tight text-foreground">{s.v}</div>
             <p className="text-[13px] leading-[1.45] text-muted-foreground font-light max-w-[260px]">{s.d}</p>
           </div>
         ))}
@@ -144,7 +144,7 @@ function SectionShell({ children, tone = "default" }: { children: ReactNode; ton
 }
 
 function H2({ children }: { children: ReactNode }) {
-  return <h2 className="uppercase text-[36px] md:text-[52px] leading-[0.95] mb-8 max-w-[860px] text-foreground" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>{children}</h2>;
+  return <h2 className="text-[28px] md:text-[40px] font-normal leading-tight mb-8 max-w-[860px] text-foreground">{children}</h2>;
 }
 
 function Lead({ children }: { children: ReactNode }) {
@@ -215,7 +215,7 @@ function SectionOffer() {
       <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
         {cards.map((c) => (
           <div key={c.v} className="border border-border bg-background p-6 flex flex-col gap-3">
-            <div className="uppercase text-[26px] leading-[1.0] text-foreground" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>{c.v}</div>
+            <div className="text-[24px] font-normal leading-tight text-foreground">{c.v}</div>
             <p className="text-[13px] leading-[1.5] text-muted-foreground">{c.d}</p>
           </div>
         ))}
@@ -227,7 +227,7 @@ function SectionOffer() {
 function Field({ label, required = false, children }: { label: string; required?: boolean; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-1">
-      <span className="uppercase text-[10px] text-background/60" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "2px" }}>{label}{required && " *"}</span>
+      <span className="uppercase text-[10px] text-background/60" style={{ letterSpacing: "2px" }}>{label}{required && " *"}</span>
       {children}
     </div>
   );
@@ -266,7 +266,7 @@ const SectionForm = forwardRef<HTMLDivElement>((_props, ref) => {
       <div className="max-w-[760px] mx-auto px-6 md:px-8 py-14 md:py-16">
         {!submitted ? (
           <>
-            <h2 className="uppercase text-[36px] md:text-[52px] leading-[0.95] mb-4 text-background" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>Zarezerwuj miejsce</h2>
+            <h2 className="text-[28px] md:text-[40px] font-normal leading-tight mb-4 text-background">Zarezerwuj miejsce</h2>
             <p className="text-[16px] leading-[1.6] text-background/70 mb-10 font-light">Wypełnij formularz, wracamy do Ciebie w ciągu 48h z potwierdzeniem i terminem onboardingu.</p>
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <Field label="Email" required>
@@ -299,7 +299,7 @@ const SectionForm = forwardRef<HTMLDivElement>((_props, ref) => {
           </>
         ) : (
           <div className="py-6">
-            <h2 className="uppercase text-[40px] md:text-[56px] leading-[0.95] mb-4 text-background" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>Dziękujemy!</h2>
+            <h2 className="text-[32px] md:text-[48px] font-normal leading-tight mb-4 text-background">Dziękujemy!</h2>
             <p className="text-[16px] leading-[1.65] text-background/75 max-w-[560px] font-light">Twoje miejsce jest zarezerwowane. Wracamy do Ciebie w ciągu 48h z dalszymi informacjami o pilotażu MLB.</p>
           </div>
         )}
@@ -325,7 +325,7 @@ function SectionFAQ() {
           return (
             <li key={it.q}>
               <button type="button" onClick={() => setOpen(isOpen ? null : i)} className="w-full flex items-center justify-between gap-6 py-5 text-left">
-                <span className="uppercase text-[20px] md:text-[24px] leading-snug text-foreground" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>{it.q}</span>
+                <span className="text-[18px] md:text-[22px] font-normal leading-snug text-foreground">{it.q}</span>
                 <span className="shrink-0 text-[20px] leading-none transition-transform text-foreground" style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }} aria-hidden>+</span>
               </button>
               {isOpen && <p className="pb-6 pr-10 text-[15px] leading-[1.65] text-muted-foreground font-light">{it.a}</p>}
@@ -341,7 +341,7 @@ function BottomBar() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8 py-8 flex items-center justify-between text-[12px] text-muted-foreground">
-        <span className="uppercase" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "2px" }}>FashionHero · Most Lovable Brands</span>
+        <span className="uppercase" style={{ letterSpacing: "1px" }}>FashionHero · Most Lovable Brands</span>
         <span>© {new Date().getFullYear()} FashionHero, Inc.</span>
       </div>
     </footer>

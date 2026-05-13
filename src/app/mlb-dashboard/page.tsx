@@ -150,7 +150,7 @@ export default function MLBDashboard() {
 
       <header className="border-b border-border bg-background">
         <div className="max-w-[1440px] mx-auto px-8 h-16 flex items-center justify-between">
-          <div className="font-display uppercase text-[18px]" style={{ letterSpacing: "1.5px", fontFamily: "'Barlow Condensed', sans-serif" }}>
+          <div className="text-[18px] font-medium" style={{ letterSpacing: "0.3px" }}>
             Most Lovable Brand <span className="text-muted-foreground font-normal">— FashionHero</span>
           </div>
           <div className="flex items-center gap-4">
@@ -167,7 +167,7 @@ export default function MLBDashboard() {
         <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
           <div>
             <div className="text-[10px] uppercase text-muted-foreground mb-2" style={{ letterSpacing: "3px" }}>Placement dashboard</div>
-            <h1 className="uppercase text-[40px] leading-none" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1.5px" }}>Most Lovable Brand</h1>
+            <h1 className="text-[36px] font-normal leading-tight">Most Lovable Brand</h1>
             <p className="mt-3 text-[14px] text-muted-foreground max-w-[600px]">Your homepage placement on FashionHero. Track what you&apos;ve spent and what it&apos;s brought back — credit and your own money are kept separate.</p>
             <p className="mt-3 text-[14px] text-foreground max-w-[600px]">Welcome to the pilot of Most Lovable Brand visibility! We&apos;re happy that you decided to take this step and help us expand your brand and optimize your results.</p>
             <p className="mt-3 text-[14px] text-foreground max-w-[600px]">Upload your banner for the placement and track your results using your free credits first!</p>
@@ -181,7 +181,7 @@ export default function MLBDashboard() {
           <div className="p-6 flex items-start gap-5 flex-wrap" style={{ background: "#0a0a0a", color: "#ffffff" }}>
             <div className="flex-1 min-w-[260px]">
               <div className="text-[10px] uppercase mb-2 opacity-70" style={{ letterSpacing: "2.5px" }}>Credit exhausted</div>
-              <div className="text-[22px]" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1px" }}>Your free 500 PLN credit is gone.</div>
+              <div className="text-[20px] font-normal">Your free 500 PLN credit is gone.</div>
               <div className="text-[13px] mt-2 opacity-80">
                 Placement is paused. To keep appearing on the FashionHero homepage, continue with your own funds.
                 {roi !== null && <> Your current ROI is <strong>{roi.toFixed(1)}x</strong>.</>}
@@ -226,7 +226,7 @@ export default function MLBDashboard() {
           <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
             <div>
               <div className="text-[10px] uppercase text-muted-foreground mb-2" style={{ letterSpacing: "3px" }}>Return on placement</div>
-              <h2 className="uppercase text-[24px]" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1.5px" }}>ROI</h2>
+              <h2 className="text-[22px] font-normal">ROI</h2>
             </div>
             <div className="text-[11px] text-muted-foreground">Updated daily · <LastRefresh /></div>
           </div>
@@ -234,7 +234,7 @@ export default function MLBDashboard() {
           {!hasROIData ? (
             <div className="border border-dashed border-border p-10 text-center">
               <div className="text-[10px] uppercase text-muted-foreground mb-3" style={{ letterSpacing: "2.5px" }}>Collecting data</div>
-              <div className="text-[22px] mb-2" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1px" }}>ROI appears after the first 48 hours.</div>
+              <div className="text-[20px] font-normal mb-2">ROI appears after the first 48 hours.</div>
               <p className="text-[13px] text-muted-foreground max-w-[440px] mx-auto">We need a couple of days of impressions and attributed sales before showing a meaningful return number. Your placement is live.</p>
             </div>
           ) : (
@@ -243,7 +243,7 @@ export default function MLBDashboard() {
                 <div className="text-[10px] uppercase text-muted-foreground mb-4 inline-flex items-center gap-1.5" style={{ letterSpacing: "2.5px" }}>
                   ROI <InfoTooltip text="Last-click attribution, 7-day window" />
                 </div>
-                <div className="leading-none" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 80, letterSpacing: "1px" }}>{roi!.toFixed(1)}x</div>
+                <div className="font-normal leading-none" style={{ fontSize: 80 }}>{roi!.toFixed(1)}x</div>
                 <div className="mt-6"><RoiBars data={state.roiTrend} benchmark={MLB_BENCHMARK_ROI} /></div>
                 <div className="mt-auto pt-5 space-y-1">
                   <div className="text-[12px] text-muted-foreground">vs FashionHero MLB avg: <span className="text-foreground">{MLB_BENCHMARK_ROI.toFixed(1)}x</span></div>
@@ -268,7 +268,7 @@ export default function MLBDashboard() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6" style={{ background: "rgba(10,10,10,0.55)" }}>
           <div className="bg-background border border-border max-w-[480px] w-full p-8">
             <div className="text-[10px] uppercase text-muted-foreground mb-2" style={{ letterSpacing: "3px" }}>Heads up</div>
-            <h3 className="uppercase text-[24px] mb-4" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1.5px" }}>Your free 500 PLN credit is almost gone.</h3>
+            <h3 className="text-[22px] font-normal mb-4">Your free 500 PLN credit is almost gone.</h3>
             <p className="text-[13px] text-muted-foreground mb-6">
               You have {fmtPLN(state.creditBalance)} of credit left.
               {roi !== null && <> Current ROI: <strong className="text-foreground">{roi.toFixed(1)}x</strong> ({fmtPLN(state.attributedSales)} in attributed sales).</>}{" "}
@@ -313,7 +313,7 @@ function BalanceCard({ label, sublabel, value, footer, tone, progress, children 
   return (
     <div className="p-7" style={{ background: isPrimary ? "#0a0a0a" : "transparent", color: isPrimary ? "#ffffff" : "#0a0a0a", border: isPrimary ? "1px solid #0a0a0a" : "1px solid var(--border)" }}>
       <div className="text-[10px] uppercase mb-2" style={{ letterSpacing: "2.5px", color: isPrimary ? "rgba(255,255,255,0.65)" : "var(--muted-foreground)" }}>{label}</div>
-      <div className="text-[40px] leading-none mb-2" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1px" }}>{value}</div>
+      <div className="text-[40px] font-normal leading-none mb-2">{value}</div>
       <div className="text-[12px] mb-4" style={{ color: isPrimary ? "rgba(255,255,255,0.7)" : "var(--muted-foreground)" }}>{sublabel}</div>
       {progress !== undefined && (
         <div className="h-1 w-full mb-3" style={{ background: isPrimary ? "rgba(255,255,255,0.2)" : "var(--muted)" }}>
@@ -333,7 +333,7 @@ function PerfRow({ label, value, hint }: { label: string; value: string; hint?: 
         <div className="text-[10px] uppercase text-muted-foreground" style={{ letterSpacing: "2.5px" }}>{label}</div>
         {hint && <div className="mt-1 text-[11px] text-muted-foreground">{hint}</div>}
       </div>
-      <div className="leading-none" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 28, letterSpacing: "0.5px" }}>{value}</div>
+      <div className="font-normal leading-none" style={{ fontSize: 28 }}>{value}</div>
     </div>
   );
 }
@@ -360,7 +360,7 @@ function ActivityLog({ daysActive, payingFromOwn, creditBalance, attributedSales
   return (
     <section className="border border-border bg-background p-8">
       <div className="flex items-baseline justify-between mb-6 flex-wrap gap-3">
-        <h2 className="uppercase text-[24px]" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "1.5px" }}>Activity</h2>
+        <h2 className="text-[22px] font-normal">Activity</h2>
         <span className="text-[11px] text-muted-foreground">Audit trail · newest first</span>
       </div>
       <ol className="relative">
