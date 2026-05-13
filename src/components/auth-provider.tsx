@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 interface User {
   email: string;
@@ -20,18 +20,15 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 const STORAGE_KEY = "stepforward_user";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
+  const [user, setUser] = useState<User | null>(() => {
     try {
+      if (typeof window === "undefined") return null;
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        setUser(JSON.parse(stored));
-      }
+      return stored ? JSON.parse(stored) : null;
     } catch {
-      // ignore parse errors
+      return null;
     }
-  }, []);
+  });
 
   const login = useCallback(async (email: string, _password: string) => {
     // Mock login — always succeeds

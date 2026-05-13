@@ -25,14 +25,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [query]);
 
   useEffect(() => {
-    if (isOpen) {
-      inputRef.current?.focus();
-      document.body.style.overflow = "hidden";
-    } else {
-      setQuery("");
-      document.body.style.overflow = "";
-    }
+    if (!isOpen) return;
+    inputRef.current?.focus();
+    document.body.style.overflow = "hidden";
     return () => {
+      setQuery("");
       document.body.style.overflow = "";
     };
   }, [isOpen]);
