@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { WishlistButton } from "./wishlist-button";
 import { useQuickView } from "./quick-view-provider";
 import { getSellerById } from "@/data/sellers";
+
+function seededInt(seed: string, min: number, max: number): number {
+  let h = 5381;
+  for (let i = 0; i < seed.length; i++) {
+    h = ((h * 33) ^ seed.charCodeAt(i)) >>> 0;
+  }
+  return min + (h % (max - min + 1));
+}
 
 interface ProductCardProps {
   product: Product;
@@ -26,6 +35,8 @@ export function ProductCard({ product, className }: ProductCardProps) {
   const firstColor = product.colors[0];
   const { openQuickView } = useQuickView();
   const seller = getSellerById(product.sellerId);
+  const stock = seededInt(product.id + "stock", 1, 8);
+  const viewers = seededInt(product.id + "viewers", 3, 18);
   const badgeLabel = product.badge === "new"
     ? "NEW"
     : product.badge === "new-color"
@@ -84,6 +95,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
               </div>
             )}
 
+            {stock < 5 && (
+              <span className="absolute bottom-3 left-3 text-[10px] font-medium bg-red-600 text-white px-2 py-1 z-10">
+                Zostało tylko {stock} {stock === 1 ? "sztuka" : "sztuki"}
+              </span>
+            )}
+
             {/* Quick View button — desktop only, on hover */}
             <button
               onClick={(e) => {
@@ -126,6 +143,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
           )}
         </div>
       </Link>
+
+      {/* Viewers indicator */}
+      <div className="flex items-center gap-1 mb-1.5">
+        <Eye className="w-3 h-3 text-warm-gray/60" />
+        <span className="text-[11px] text-warm-gray/70">{viewers} osób ogląda teraz</span>
+      </div>
 
       {/* Color swatches */}
       <div className="flex gap-1.5 mb-1.5">
