@@ -2,17 +2,10 @@
 
 import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react";
 import { PromotedBrands } from "@/components/sections/promoted-brands";
-
+import posthog from "posthog-js";
 
 function track(event: string, payload: Record<string, unknown> = {}) {
-  const evt = { event, timestamp: new Date().toISOString(), ...payload };
-  if (typeof window !== "undefined") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const w = window as any;
-    w.dataLayer = w.dataLayer || [];
-    w.dataLayer.push(evt);
-  }
-  console.log("[pilot_mlb_event]", evt);
+  posthog.capture(`pilot_mlb_${event}`, payload);
 }
 
 export default function PilotMLB() {
@@ -257,7 +250,8 @@ const SectionForm = forwardRef<HTMLDivElement>((_props, ref) => {
       existing.push(payload);
       localStorage.setItem("pilot_mlb_signups", JSON.stringify(existing));
     } catch { /* ignore */ }
-    track("form_submit", payload);
+    posthog.identify(trimmedEmail, { shop: trimmedShop, email: trimmedEmail });
+    track("form_submit", { marketing_spend: spend, has_aha_text: !!ahaText.trim() });
     setSubmitted(true);
   };
 
