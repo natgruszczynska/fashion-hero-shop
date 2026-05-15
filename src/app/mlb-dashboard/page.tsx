@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
-
+import posthog from "posthog-js";
 
 const USER_ID = "seller_marta_handmade";
 const DAILY_BUDGET = 25;
@@ -19,7 +19,7 @@ type EventName =
   | "payment_decision_cancel";
 
 function logEvent(name: EventName, payload: Record<string, unknown> = {}) {
-  console.log("[mlb_event]", { event: name, user_id: USER_ID, timestamp: new Date().toISOString(), ...payload });
+  posthog.capture(`mlb_${name}`, { user_id: USER_ID, ...payload });
 }
 
 type Scenario = "day1" | "day12" | "day18" | "exhausted" | "own_funds";
