@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 const brands = [
   { name: "Maison Noir", claim: "Timeless tailoring, modern silhouettes", accent: "#1a1a1a" },
   { name: "Velvet Studio", claim: "Soft luxury for every day", accent: "#7a3b5c" },
@@ -68,6 +72,7 @@ export function PromotedBrands() {
               <button
                 className="uppercase border border-foreground/80 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-full px-5 py-2.5 mt-auto self-start"
                 style={{ fontSize: "10px", letterSpacing: "2px", fontWeight: 600 }}
+                onClick={() => posthog.capture("promoted_brands_click", { brand_name: b.name })}
               >
                 Zobacz kolekcję
               </button>
